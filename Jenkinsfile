@@ -2,7 +2,7 @@ def templateName = 'java-sample-2'
 pipeline {
   agent {
     node {
-      label 'master' 
+      label 'maven' 
     }
   }
   options {
