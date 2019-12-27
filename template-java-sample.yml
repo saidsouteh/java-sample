@@ -13,8 +13,8 @@ metadata:
     version: 1.1.0
   name: template-java-sample
 objects:
-- apiVersion: v1
-  kind: Service
+- kind: Service
+  apiVersion: v1
   metadata:
     labels:
       application: ${APPLICATION_NAME}
@@ -26,8 +26,8 @@ objects:
       targetPort: 80
     selector:
       name: ${APPLICATION_NAME}
-- apiVersion: v1
-  kind: Route
+- kind: Route
+  apiVersion: v1
   metadata:
     labels:
       application: ${APPLICATION_NAME}
@@ -37,14 +37,13 @@ objects:
     to:
       kind: Service
       name: "${APPLICATION_NAME}"
-- apiVersion: v1
-  kind: ImageStream
+- kind: ImageStream
+  apiVersion: v1
   metadata:
     labels:
       application: ${APPLICATION_NAME}
     name: ${APPLICATION_NAME}
-- apiVersion: v1
-  kind: BuildConfig
+- kind: BuildConfig
   apiVersion: v1
   metadata:
     name: "${APPLICATION_NAME}"
