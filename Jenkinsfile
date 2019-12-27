@@ -51,7 +51,7 @@ pipeline {
             openshift.withCluster() {
                 openshift.withProject() {
                   def builds = openshift.selector("bc", templateName).related('builds')
-                  timeout(2) { 
+                  timeout(10) { 
                     builds.untilEach(1) {
                       return (it.object().status.phase == "Complete")
                     }
