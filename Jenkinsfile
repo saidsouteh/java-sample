@@ -1,4 +1,4 @@
-def templateName = 'template-java-sample' 
+def templateName = 'java-sample-2' 
 pipeline {
   agent {
     node {
