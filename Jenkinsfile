@@ -2,7 +2,7 @@ def templateName = 'java-sample-2'
 pipeline {
   agent {
     node {
-      label 'agent' 
+      label 'maven' 
     }
   }
   options {
@@ -51,10 +51,8 @@ pipeline {
             openshift.withCluster() {
                 openshift.withProject() {
                   def builds = openshift.selector("bc", templateName).related('builds')
-                  timeout(10) { 
-                    builds.untilEach(1) {
+                  timeout(2) { 
                       return (it.object().status.phase == "Complete")
-                    }
                   }
                 }
             }
