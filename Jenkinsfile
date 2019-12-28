@@ -53,8 +53,10 @@ pipeline {
                   def builds = openshift.selector("bc", templateName).related('builds')
                   def buildSelector = builds.startBuild()
                   buildSelector.logs('-f')
-                  timeout(2) { 
+                      timeout(2) { 
+                    builds.untilEach(1) {
                       return (it.object().status.phase == "Complete")
+                    }
                   }
                 }
             }
