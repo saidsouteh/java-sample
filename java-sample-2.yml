@@ -90,6 +90,15 @@ objects:
       name: ${APPLICATION_NAME}
     strategy:
       type: Recreate
+    triggers:
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+        - java-sample-2
+        from:
+          kind: ImageStreamTag
+          name: "${NAME}:latest"
     template:
       metadata:
         labels:
