@@ -48,18 +48,14 @@ pipeline {
     stage('build') {
       steps {
         script {
-            openshift.withCluster() {
-                openshift.withProject() {
-                  def builds = openshift.selector("bc", templateName).related('builds')
-                  def buildSelector = builds.startBuild()
-                  buildSelector.logs('-f')
-                      timeout(2) { 
-                    builds.untilEach(1) {
-                      return (it.object().status.phase == "Complete")
-                    }
-                  }
-                }
-            }
+                            openshift.withCluster() {
+                                openshift.withProject() {
+                                    def builds = openshift.selector("bc", templateName).related('builds')
+                                    builds.untilEach(1) {
+                                        return (it.object().status.phase == "Complete")
+                                    }
+                                }
+                            }
         }
       }
     }
