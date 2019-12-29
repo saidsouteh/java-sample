@@ -63,7 +63,13 @@ objects:
         name: ${APPLICATION_NAME}:latest
     triggers:
     - type: ImageChange
-    - type: ConfigChange   
+    - type: ConfigChange
+    - type: GitHub
+      github:
+        secret: "${GITHUB_WEBHOOK_SECRET}"
+    - type: Generic
+      generic:
+        secret: "${GENERIC_WEBHOOK_SECRET}"
     source:
       contextDir: ${CONTEXT_DIR}
       git:
@@ -130,4 +136,14 @@ parameters:
 - description: The Git reference
   displayName: GIT REERENCE
   name: SOURCE_REPOSITORY_REF
+- name: GITHUB_WEBHOOK_SECRET
+  displayName: GitHub Webhook Secret
+  description: Github trigger secret.  A difficult to guess string encoded as part of the webhook URL.  Not encrypted.
+  generate: expression
+  from: "[a-zA-Z0-9]{40}"
+- name: GENERIC_WEBHOOK_SECRET
+  displayName: Generic Webhook Secret
+  description: A secret string used to configure the Generic webhook.
+  generate: expression
+  from: "[a-zA-Z0-9]{40}"
 
