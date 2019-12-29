@@ -1,3 +1,4 @@
+def templatePath = 'https://raw.githubusercontent.com/saidsouteh/java-sample/master/java-sample-2.yml'
 def templateName = 'java-sample-2' 
 pipeline {
   agent {
