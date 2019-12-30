@@ -3,7 +3,7 @@ def templateName = 'java-sample-2'
 pipeline {
   agent {
     node {
-      label 'maven' 
+      label 'nodejs' 
     }
   }
   options {
