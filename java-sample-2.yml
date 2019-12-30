@@ -2,7 +2,7 @@
 kind: Template
 apiVersion: v1
 metadata:
-  name: nodejs-mongodb-example
+  name: java-sample-2
   annotations:
     openshift.io/display-name: Node.js + MongoDB (Ephemeral)
     description: |-
