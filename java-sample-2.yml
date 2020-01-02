@@ -106,15 +106,15 @@ objects:
     strategy:
       type: Recreate
     triggers:
-#    - type: ImageChange
-#      imageChangeParams:
-#        automatic: true
-#        containerNames:
-#        - java-sample-2
-#        from:
-#          kind: ImageStreamTag
-#          name: "${NAME}:latest"
-    - type: ConfigChange
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+        - java-sample-2
+        from:
+          kind: ImageStreamTag
+          name: "${NAME}:latest"
+#    - type: ConfigChange
     replicas: 1
     selector:
       name: "${NAME}"
