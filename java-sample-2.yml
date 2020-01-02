@@ -114,7 +114,7 @@ objects:
         from:
           kind: ImageStreamTag
           name: "${NAME}:latest"
-    - type: ConfigChange
+#    - type: ConfigChange
     replicas: 1
     selector:
       name: "${NAME}"
