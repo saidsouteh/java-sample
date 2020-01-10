@@ -131,7 +131,7 @@ objects:
           - containerPort: 8080
           livenessProbe:
             httpGet:
-              path: /healthz
+              path: /actuator/info
               port: 8080
             initialDelaySeconds: 3
             periodSeconds: 3
